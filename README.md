@@ -1,5 +1,4 @@
-# Microsoft Bot Framework connector
-# for Botpress (https://botpress.io/)
+# Microsoft Bot Framework connector for [Botpress](https://botpress.io/)
 
 
 ## Installation
@@ -10,7 +9,7 @@ botpress install botpress-msbotfw
 
 ## Get started
 
-#### 1. Create a bot on [Bot Framework Developer Dashboard] (https://docs.botframework.com/en-us/csharp/builder/sdkreference/gettingstarted.html#registering)
+#### 1. Create a bot on [Bot Framework Developer Dashboard](https://docs.botframework.com/en-us/csharp/builder/sdkreference/gettingstarted.html#registering)
 
 #### 2. Setup Application Key & Password
 
@@ -23,7 +22,7 @@ You can also
 - Set the bot application ID in env var MSBOTFW_APP_ID 
 - Set the bot application password in env var MSBOTFW_APP_PASSWORD
 
-#### 3. Set the webhook url in [Bot Framework config] (https://docs.botframework.com/en-us/csharp/builder/sdkreference/gettingstarted.html#registering)
+#### 3. Set the webhook url in [Bot Framework config](https://docs.botframework.com/en-us/csharp/builder/sdkreference/gettingstarted.html#registering)
 
 The messaging endpoint must be **https://YOUR_DOMAIN/api/botpress-msbotfw/messages**
 
@@ -51,12 +50,12 @@ bp.msbotfw.sendText(session, 'aMessage')
 
 #### Attachments
 
-You can use the Bot Framework attachment API described here: https://docs.botframework.com/en-us/csharp/builder/sdkreference/attachments.html
+You can use the [Bot Framework attachment API described here](https://docs.botframework.com/en-us/csharp/builder/sdkreference/attachments.html)
 
-You can see how it is rendered on different platforms here: https://docs.botframework.com/en-us/channel-inspector/channels/Facebook 
+You can see [how it is rendered on different platforms here](https://docs.botframework.com/en-us/channel-inspector/channels/Facebook)
 
 ```js
-bp.msbotfw.sendText(session, {
+bp.msbotfw.sendAttachment(session, {
     'contentType': 'application/vnd.microsoft.card.hero',
     'content': {
       'title': 'Who is it?',
