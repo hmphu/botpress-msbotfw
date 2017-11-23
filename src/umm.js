@@ -2,7 +2,7 @@
 * @Author: HoangManhPhu
 * @Date:   2017-11-22 23:25:38
 * @Last Modified by:   Phu Hoang
-* @Last Modified time: 2017-11-23 01:41:57
+* @Last Modified time: 2017-11-23 12:04:18
 */
 
 const actions  = require('./actions')
@@ -41,10 +41,10 @@ function processOutgoing({ event, blocName, instruction }) {
 
   if (!_.isNil(instruction.contentType) || !_.isNil(instruction.attachments)) {
     if(event.session){
-      return actions.createObject(event.session, ins)
+      return actions.createAttachment(event.session, ins)
     }
     else if(event.user){
-      return actions.createObjectToUser(event.user, ins)
+      return actions.createAttachmentToUser(event.user, ins)
     }
   }
 

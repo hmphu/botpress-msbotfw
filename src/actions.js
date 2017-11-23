@@ -2,7 +2,7 @@
 * @Author: HoangManhPhu
 * @Date:   2017-11-22 13:07:34
 * @Last Modified by:   Phu Hoang
-* @Last Modified time: 2017-11-23 01:42:19
+* @Last Modified time: 2017-11-23 12:57:23
 */
 
 const Promise = require('bluebird')
@@ -48,12 +48,14 @@ const createTextToUser = (user, message) => {
     }
 }
 
-const createObject = (session, object) => {
+const createAttachment = (session, object) => {
   var data = object.contentType ? { attachments: [object] } : object
+
+  console.log(data)
 
   return create({
     platform: 'msbotfw',
-    type: 'text',
+    type: 'attachment',
     text: typeof object === 'string' ? object : _.get(data, 'attachments[0].content.text') || object.text || 'N/A',
     user: session.user,
     raw: {
@@ -63,12 +65,12 @@ const createObject = (session, object) => {
   });
 }
 
-const createObjectToUser = (user, object) => {
+const createAttachmentToUser = (user, object) => {
   var data = object.contentType ? { attachments: [object] } : object
 
   return create({
     platform: 'msbotfw',
-    type: 'text',
+    type: 'attachment',
     text: typeof object === 'string' ? object : _.get(data, 'attachments[0].content.text') || object.text || 'N/A',
     user: user,
     raw: {
@@ -81,6 +83,6 @@ const createObjectToUser = (user, object) => {
 module.exports = {
   createText,
   createTextToUser,
-  createObject,
-  createObjectToUser
+  createAttachment,
+  createAttachmentToUser
 }

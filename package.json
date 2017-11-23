@@ -1,6 +1,6 @@
 {
   "name": "botpress-msbotfw",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Microsoft Bot Framework connector",
   "main": "bin/node.bundle.js",
   "botpress": {

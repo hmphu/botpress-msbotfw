@@ -38,7 +38,7 @@ bp.hear({platform: 'msbotfw', type: 'message'}, (event, next) => {
     const text = event.text
     const session = event.session
     
-    bp.botfmk.sendText(session, `You said ${text}`)
+    bp.msbotfw.sendText(session, `You said ${text}`)
 })
 ```
 
@@ -46,7 +46,7 @@ bp.hear({platform: 'msbotfw', type: 'message'}, (event, next) => {
 
 #### Text messages
 ```js
-bp.botfmk.sendText(session, 'aMessage')
+bp.msbotfw.sendText(session, 'aMessage')
 ```
 
 #### Attachments
@@ -56,7 +56,7 @@ You can use the Bot Framework attachment API described here: https://docs.botfra
 You can see how it is rendered on different platforms here: https://docs.botframework.com/en-us/channel-inspector/channels/Facebook 
 
 ```js
-bp.botfmk.sendText(session, {
+bp.msbotfw.sendText(session, {
     'contentType': 'application/vnd.microsoft.card.hero',
     'content': {
       'title': 'Who is it?',
@@ -80,37 +80,4 @@ bp.botfmk.sendText(session, {
       ]
     }
   })
-```
-
-#### Multiple messages
-```js
-bp.botfmk.sendText(session,[
-  'Who is it?',
-  {
-    "contentType": "image/png",
-    "contentUrl": "https://upload.wikimedia.org/wikipedia/en/a/a6/Bender_Rodriguez.png"
-    "name":"Bender_Rodriguez.png"
-  },
-  {
-    'attachments': [
-      {
-        'contentType': 'application/vnd.microsoft.card.hero',
-        'content': {
-          'buttons': [
-            {
-              'type': 'postBack',
-              'title': 'Bender Rodriguez',
-              'value': 'insert_your_postback'
-            },
-            {
-              'type': 'postBack',
-              'title': 'R2D2',
-              'value': 'insert_your_postback'
-            }
-          ]
-        }
-      }
-    ]
-  }
-])
 ```
