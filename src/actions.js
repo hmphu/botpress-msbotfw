@@ -2,7 +2,7 @@
 * @Author: HoangManhPhu
 * @Date:   2017-11-22 13:07:34
 * @Last Modified by:   Phu Hoang
-* @Last Modified time: 2017-11-23 12:57:23
+* @Last Modified time: 2017-11-27 00:10:43
 */
 
 const Promise = require('bluebird')
@@ -51,7 +51,7 @@ const createTextToUser = (user, message) => {
 const createAttachment = (session, object) => {
   var data = object.contentType ? { attachments: [object] } : object
 
-  console.log(data)
+  // console.log(data)
 
   return create({
     platform: 'msbotfw',
