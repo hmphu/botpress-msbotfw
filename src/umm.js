@@ -1,32 +1,36 @@
 /*
-* @Author: HoangManhPhu
-* @Date:   2017-11-22 23:25:38
-* @Last Modified by:   Phu Hoang
-* @Last Modified time: 2017-11-23 12:04:18
-*/
+ * @Author: HoangManhPhu
+ * @Date:   2017-11-22 23:25:38
+ * @Last Modified by:   Phu Hoang
+ * @Last Modified time: 2017-12-03 00:20:03
+ */
 
-const actions  = require('./actions')
-const _  = require('lodash')
+const actions = require('./actions')
+const _ = require('lodash')
 
-function processOutgoing({ event, blocName, instruction }) {
+function processOutgoing({
+  event,
+  blocName,
+  instruction
+}) {
   const ins = Object.assign({}, instruction) // Create a shallow copy of the instruction
 
   ////////
   // PRE-PROCESSING
   ////////
-  
+
   const optionsList = [
-    'quick_replies', 
-    'waitRead', 
-    'waitDelivery', 
-    'typing', 
+    'quick_replies',
+    'waitRead',
+    'waitDelivery',
+    'typing',
     'tag',
     '__platformSpecific',
     'on'
   ]
 
   const options = _.pick(instruction, optionsList)
-  
+
   for (let prop of optionsList) {
     delete ins[prop]
   }
@@ -40,19 +44,17 @@ function processOutgoing({ event, blocName, instruction }) {
   /////////
 
   if (!_.isNil(instruction.contentType) || !_.isNil(instruction.attachments)) {
-    if(event.session){
+    if (event.session) {
       return actions.createAttachment(event.session, ins)
-    }
-    else if(event.user){
+    } else if (event.user) {
       return actions.createAttachmentToUser(event.user, ins)
     }
   }
 
   if (!_.isNil(instruction.text)) {
-    if(event.session){
+    if (event.session) {
       return actions.createText(event.session, instruction.text)
-    }
-    else if(event.user){
+    } else if (event.user) {
       return actions.createTextToUser(event.user, instruction.text)
     }
   }
@@ -60,7 +62,7 @@ function processOutgoing({ event, blocName, instruction }) {
   ////////////
   /// POST-PROCESSING
   ////////////
-  
+
   // Nothing to post-process yet
 
   ////////////
@@ -72,7 +74,7 @@ function processOutgoing({ event, blocName, instruction }) {
 }
 
 function getTemplates() {
-    return [];
+  return [];
 }
 
 module.exports = bp => {
@@ -80,7 +82,9 @@ module.exports = bp => {
 
   umm && registerConnector && registerConnector({
     platform: 'msbotfw',
-    processOutgoing: args => processOutgoing(Object.assign({}, args, { bp })),
+    processOutgoing: args => processOutgoing(Object.assign({}, args, {
+      bp
+    })),
     templates: getTemplates()
   })
 }

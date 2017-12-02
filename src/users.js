@@ -1,15 +1,15 @@
 /*
-* @Author: Phu Hoang
-* @Date:   2017-11-23 00:52:02
-* @Last Modified by:   Phu Hoang
-* @Last Modified time: 2017-11-23 01:41:44
-*/
+ * @Author: Phu Hoang
+ * @Date:   2017-11-23 00:52:02
+ * @Last Modified by:   Phu Hoang
+ * @Last Modified time: 2017-12-03 00:19:59
+ */
 
 const _ = require('lodash')
 
 module.exports = function(bp, messenger) {
 
-  function profileToDbEntry(profile) {
+    function profileToDbEntry(profile) {
         return {
             id: profile.id,
             platform: 'msbotfw',
@@ -60,11 +60,13 @@ module.exports = function(bp, messenger) {
         }
 
         await bp.db.saveUser(profileToDbEntry(profile))
-        
+
         bp.db.kvs.set(`users/id/msbotfw:${userId}/skype_address`, session.message.address)
 
         return profile
     }
 
-  return { getOrFetchUserProfile }
+    return {
+        getOrFetchUserProfile
+    }
 }

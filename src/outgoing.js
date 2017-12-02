@@ -1,9 +1,9 @@
 /*
-* @Author: HoangManhPhu
-* @Date:   2017-11-22 23:25:44
-* @Last Modified by:   Phu Hoang
-* @Last Modified time: 2017-11-23 12:07:46
-*/
+ * @Author: HoangManhPhu
+ * @Date:   2017-11-22 23:25:44
+ * @Last Modified by:   Phu Hoang
+ * @Last Modified time: 2017-12-03 00:20:07
+ */
 
 const _ = require('lodash')
 const botbuilder = require('botbuilder')
@@ -23,9 +23,9 @@ const handleText = (event, next, msbotfw) => {
             session.send(replied)
         }
     } else if (user) {
-        const userId = event.user.id || event.user.userId || event.address.user.id 
+        const userId = event.user.id || event.user.userId || event.address.user.id
         bp.db.kvs.get(`users/id/${userId}/skype_address`).then(address => {
-            if(address){
+            if (address) {
                 var msg = new botbuilder.Message().address(address)
                 if (_.isArray(replied)) {
                     replied.forEach(r => {
@@ -51,7 +51,7 @@ const handleAttachment = (event, next, msbotfw) => {
     const bp = event.bp
     var replied = event.raw.message.attachments || event.raw;
     if (session) {
-        
+
         const msg = new botbuilder.Message(session)
 
         if (_.isArray(replied)) {
@@ -62,9 +62,9 @@ const handleAttachment = (event, next, msbotfw) => {
 
         msbotfw.send(msg)
     } else if (user) {
-        const userId = event.user.id || event.user.userId || event.address.user.id 
+        const userId = event.user.id || event.user.userId || event.address.user.id
         bp.db.kvs.get(`users/id/${userId}/skype_address`).then(address => {
-            if(address){
+            if (address) {
                 var msg = new botbuilder.Message().address(address)
                 if (_.isArray(replied)) {
                     replied.forEach(r => {

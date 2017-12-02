@@ -1,9 +1,9 @@
 /*
-* @Author: HoangManhPhu
-* @Date:   2017-11-22 09:34:29
-* @Last Modified by:   Phu Hoang
-* @Last Modified time: 2017-11-23 01:41:35
-*/
+ * @Author: HoangManhPhu
+ * @Date:   2017-11-22 09:34:29
+ * @Last Modified by:   Phu Hoang
+ * @Last Modified time: 2017-12-03 00:20:15
+ */
 
 const Users = require('./users')
 
