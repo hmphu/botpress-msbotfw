@@ -2,7 +2,7 @@
  * @Author: Phu Hoang
  * @Date:   2017-11-23 00:52:02
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2017-12-03 00:19:59
+ * @Last Modified time: 2017-12-03 02:48:04
  */
 
 const _ = require('lodash')
@@ -66,7 +66,18 @@ module.exports = function(bp, messenger) {
         return profile
     }
 
+    async function removeSkypeAddress(userId){
+        const knex = await bp.db.get()
+        return knex('kvs').where('key', `users/id/msbotfw:${userId}/skype_address`).del()
+    }
+
+    async function getSkypeAddress(userId){
+        return await bp.db.kvs.get(`users/id/msbotfw:${userId}/skype_address`)
+    }
+
     return {
-        getOrFetchUserProfile
+        getOrFetchUserProfile,
+        getSkypeAddress,
+        removeSkypeAddress
     }
 }
