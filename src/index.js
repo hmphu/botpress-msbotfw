@@ -2,7 +2,7 @@
  * @Author: HoangManhPhu
  * @Date:   2017-11-22 23:20:36
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2017-12-03 00:20:11
+ * @Last Modified time: 2017-12-03 03:49:55
  */
 
 const _ = require('lodash')
@@ -114,6 +114,10 @@ module.exports = {
         })
 
         msbotfw = new botbuilder.UniversalBot(connector)
+        .set('storage', false)
+        .set('persistUserData', false) // Do not persist userData
+        .set('persistConversationData', false) // Do not persist conversationData
+        
         incoming(bp, msbotfw)
     }
 }
